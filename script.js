@@ -15,5 +15,30 @@ function addBookToLibrary (title, author, numberOfPages, readStatus) {
 }
 
 addBookToLibrary ("TBK", "Dostoyevsky", 1300, true);
+addBookToLibrary ("Beyond Good And Evil", "Nietzsche", 500, false);
+addBookToLibrary ("The stranger", "Camus", 170, true);
 
-console.log (library);
+const books = document.querySelector (".books");
+
+function displayBooks () {
+    books.textContent = "";
+        for (const book of library) {
+        let card = document.createElement ('div');
+        card.classList.add("book-card");
+        let title = document.createElement ("h2")
+        let author = document.createElement ("p")
+        let numberOfPages = document.createElement ("p")
+        let readStatus = document.createElement ("p")
+
+        title.textContent = book.title;
+        author.textContent = `Author: ${book.author}`;
+        numberOfPages.textContent = `Pages: ${book.numberOfPages}`;
+        readStatus.textContent = book.readStatus ? "Read": "Not read"
+
+        card.append (title, author, numberOfPages, readStatus);
+        books.append (card);
+
+    }
+}
+
+displayBooks();
