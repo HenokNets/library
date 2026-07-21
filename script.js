@@ -19,6 +19,8 @@ addBookToLibrary ("Beyond Good And Evil", "Nietzsche", 500, false);
 addBookToLibrary ("The stranger", "Camus", 170, true);
 
 const books = document.querySelector (".books");
+const addBtn = document.querySelector (".add-book");
+const form = document.querySelector(".book-form");
 
 function displayBooks () {
     books.textContent = "";
@@ -41,4 +43,28 @@ function displayBooks () {
     }
 }
 
-displayBooks();
+addBtn.addEventListener ('click', () => {
+    form.style.display = "block";
+
+});
+
+form.addEventListener ('submit', (event) => {
+    event.preventDefault();
+    let inputTitle = document.getElementById("title");
+    let inputAuthor = document.getElementById("author");
+    let inputPages = document.getElementById("numberOfPages");
+    let inputStatus = document.getElementById("status")
+
+    addBookToLibrary(
+    inputTitle.value,
+    inputAuthor.value,
+    inputPages.value,
+    inputStatus.checked
+    );
+    
+    displayBooks();
+
+})
+
+
+
